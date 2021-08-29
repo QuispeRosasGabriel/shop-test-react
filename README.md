@@ -1,7 +1,19 @@
-# Getting Started with Create React App
+# Techonologies used:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- React
+- Javascript 
+- CSS
+- Bootstrap
+- Bootstrap Icons
+- Redux
+- React-Redux
+- Redux-Thunk
+- React-Router-Dom
+- Yarn
 
+## To run the app
+
+- First, run yarn install, then yarn run start and the project will launch in localhost:3000
 ## Available Scripts
 
 In the project directory, you can run:
