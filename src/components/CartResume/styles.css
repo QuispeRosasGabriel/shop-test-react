@@ -1,11 +1,13 @@
 .cart-wrapper {
-    background-color: #ccc;
     position: absolute;
     top: 3rem;
     left: 16rem;
     width: 15rem;
     padding: 0.5rem;
     z-index: 10;
+    border-radius: 15px;
+    border: 1px solid #000;
+    background: whitesmoke;
     /* padding: 0.6rem 7rem 0.6rem 7rem; */
 }
 

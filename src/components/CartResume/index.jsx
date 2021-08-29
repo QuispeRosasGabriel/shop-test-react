@@ -14,6 +14,7 @@ const CartResume = ({ selectedProducts = [] }) => {
                                 <div>{name}</div>
                                 <div>{type}</div>
                             </div>
+                            <hr className='mt-2' />
                         </div>
                     )) : 'No tienes productos seleccionados'
             }

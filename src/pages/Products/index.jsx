@@ -4,6 +4,7 @@ import { addProductToCart, getProducts } from '../../actions/productosAction';
 import Spinner from '../../components/Spinner';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import ProductCard from './ProductCard';
+import Swal from 'sweetalert2'
 
 const Products = () => {
 
@@ -21,9 +22,27 @@ const Products = () => {
 
     const handleAddProductToCart = (product) => {
         const existProduct = selectedProducts.some((prd) => prd.image === product.image);
-        return !!existProduct ? alert('ya elegiste este producto') : dispatch(addProductToCart(product));
+        return !!existProduct ? rejectAddProductToList() : addProductToList(product) ;
         // listProducts.push(...listProducts, product);
         // setItem('products', JSON.stringify(listProducts))
+    }
+
+    const addProductToList = (product) => {
+        let listSelectedProducts = [];
+        let myarr = []
+        listSelectedProducts.push(product);
+        myarr = [...listSelectedProducts]
+        console.log('listt', myarr)
+        debugger
+        dispatch(addProductToCart(product))
+    }
+
+    const rejectAddProductToList = () => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "Something went wrong! You've already added this product to your cart",
+          })
     }
 
     return (

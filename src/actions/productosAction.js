@@ -1,5 +1,6 @@
 import axiosClient from "../config/axiosClient";
 import { GET_PRODUCTS, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_ERROR, SELECT_PRODUCT, DELETE_PRODUCT, DELETE_PRODUCT_SUCCESS, DELETE_PRODUCT_ERROR } from '../types'
+import Swal from 'sweetalert2'
 
 export const getProducts = () => async (dispatch) => {
     dispatch(downLoadProducts());
@@ -31,6 +32,11 @@ const downLoadProductsError = (value) => ({
 
 export const addProductToCart = (product) => (dispatch) => {
     dispatch(selectProductToBuy(product))
+    Swal.fire(
+        'Good job!',
+        'Product added succesfuly!',
+        'success'
+      )
 }
 
 const selectProductToBuy = (product) => ({
