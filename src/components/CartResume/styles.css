@@ -1,0 +1,21 @@
+.cart-wrapper {
+    background-color: #ccc;
+    position: absolute;
+    top: 3rem;
+    left: 16rem;
+    width: 15rem;
+    padding: 0.5rem;
+    z-index: 10;
+    /* padding: 0.6rem 7rem 0.6rem 7rem; */
+}
+
+.cart-product-image {
+    width: 2rem;
+}
+
+
+@media screen and (max-width: 768px ) {
+        .cart-wrapper {
+            display: none;
+        }
+}
