@@ -22,28 +22,22 @@ const Products = () => {
 
     const handleAddProductToCart = (product) => {
         const existProduct = selectedProducts.some((prd) => prd.image === product.image);
-        return !!existProduct ? rejectAddProductToList() : addProductToList(product) ;
-        // listProducts.push(...listProducts, product);
-        // setItem('products', JSON.stringify(listProducts))
+        return !!existProduct ? rejectAddProductToList() : addProductToList(product);
     }
 
     const addProductToList = (product) => {
         let listSelectedProducts = [];
-        let myarr = []
-        listSelectedProducts.push(product);
-        myarr = [...listSelectedProducts]
-        console.log('listt', myarr)
-        debugger
-        dispatch(addProductToCart(product))
+        dispatch(addProductToCart(product));
+        listSelectedProducts = [...selectedProducts];
+        setItem('productsList', JSON.stringify(listSelectedProducts))
     }
 
-    const rejectAddProductToList = () => {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: "Something went wrong! You've already added this product to your cart",
-          })
-    }
+    const rejectAddProductToList = () => Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "Something went wrong! You've already added this product to your cart",
+    })
+
 
     return (
         <>

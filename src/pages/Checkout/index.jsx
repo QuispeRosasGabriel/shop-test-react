@@ -2,18 +2,23 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteSelectedProduct } from '../../actions/productosAction';
 import Button from '../../components/Button';
+import useLocalStorage from '../../hooks/useLocalStorage';
 import './styles.css';
 
 const Checkout = () => {
     const [totalPrice, setTotalPrice] = useState(0);
+    const [listCheckout, setListCheckout ] = useState([]);
     const selectedProducts = useSelector((state) => state.products.selectedProducts);
     const dispatch = useDispatch();
-    console.log('pr', selectedProducts)
-
+    const { getItem } = useLocalStorage();
+    
     useEffect(() => {
+        const dataFromStorage = getItem('productsList');
+        dataFromStorage ? setListCheckout(JSON.parse(dataFromStorage )) : setListCheckout(selectedProducts)
+       
         const getTotalPrice = () => {
             let finalPrice = 0;
-            selectedProducts.map(({ price }) => ({ price })).forEach(({ price }) => finalPrice += price);
+            listCheckout.map(({ price }) => ({ price })).forEach(({ price }) => finalPrice += price);
             setTotalPrice(finalPrice)
         }
 
@@ -43,7 +48,7 @@ const Checkout = () => {
                         </thead>
                         <tbody>
                             {
-                                selectedProducts?.map(({ name, image, amiiboSeries, gameSeries, type, price },idx) => (
+                                listCheckout?.map(({ name, image, amiiboSeries, gameSeries, type, price },idx) => (
                                     <tr key={idx}>
                                         <td>
                                             <img className='checkout-product-image' src={image} alt={name} />
